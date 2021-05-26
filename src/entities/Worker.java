@@ -72,12 +72,12 @@ public class Worker {
 	public double income(int year, int month) {
 		double sum = baseSalary;
 		Calendar cal = Calendar.getInstance();
-		for(HourContract contract : contracts) {
-			cal.setTime(contract.getDate());
-			int contractYear = cal.get(Calendar.YEAR);
-			int contractMonth = cal.get(Calendar.MONTH);
-			if(year == contractYear && month == contractMonth) {
-				sum += contract.totalValue();
+		for(HourContract c : contracts) {
+			cal.setTime(c.getDate());
+			int c_year = cal.get(Calendar.YEAR);
+			int c_month = 1 + cal.get(Calendar.MONTH);
+			if(year == c_year && month == c_month) {
+				sum += c.totalValue();
 			}
 		}
 		return sum;
